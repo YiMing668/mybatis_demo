@@ -1,0 +1,32 @@
+﻿<sqlMap namespace="TaskMetaDataMapper" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="TeldOrder" type="demo.ibatis.TeldOrder,demo.ibatis"/>
+  </alias>
+  <resultMaps>
+    <resultMap id="TeldOrderResultMap" class="TeldOrder">
+      <result property="ID" column="ID" />
+      <result property="Code" column="Code" />
+      <result property="Price" column="Price" />
+      <result property="Quantity" column="Quantity" />
+      <result property="Creator" column="Creator" />
+      <result property="CreateTime" column="CreateTime" />
+      <result property="LastModifier" column="LastModifier" />
+      <result property="LastModifyTime" column="LastModifyTime" />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="SaveOrder" parameterClass="TeldOrder">
+      INSERT INTO TeldOrder(ID,Code,Price,Quantity,Creator,LastModifier)
+      VALUES (#ID#,#Code#,#Price#,#Quantity#,#Creator#,#LastModifier#)
+    </insert>
+    <select id ="GetOrder" resultMap="TeldOrderResultMap" parameterClass="string">
+      SELECT ID,Code,Price,Quantity,Creator,LastModifier,CreateTime,LastModifyTime FROM TeldOrder WHERE ID=#id#
+    </select>
+    <select id ="GetOrderall" resultMap="TeldOrderResultMap">
+      SELECT ID,Code,Price,Quantity,Creator,LastModifier,CreateTime,LastModifyTime FROM TeldOrder
+    </select>
+    <delete id="DeleteOrder" parameterClass="string">
+      DELETE FROM TeldOrder WHERE ID=#id#
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,58 @@
+create data test;
+USE [test]
+GO
+
+/****** Object:  Table [dbo].[TeldOrder]    Script Date: 2019/2/27 16:12:22 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TeldOrder](
+	[ID] [varchar](36) NOT NULL,
+	[Code] [varchar](256) NOT NULL,
+	[Price] [decimal](24, 7) NULL,
+	[Quantity] [int] NULL,
+	[Creator] [varchar](128) NULL,
+	[CreateTime] [datetime] NOT NULL,
+	[LastModifier] [varchar](128) NULL,
+	[LastModifyTime] [datetime] NOT NULL,
+ CONSTRAINT [Pk_TeldOrder] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[TeldOrder] ADD  DEFAULT (getdate()) FOR [CreateTime]
+GO
+
+ALTER TABLE [dbo].[TeldOrder] ADD  DEFAULT (getdate()) FOR [LastModifyTime]
+GO
+
+
+
+
+
+
+
+
+
+USE [test]
+GO
+
+/****** Object:  Table [dbo].[temp]    Script Date: 2019/2/27 16:12:50 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[temp](
+	[id] [int] NULL,
+	[names] [varchar](22) NULL
+) ON [PRIMARY]
+GO
+
+
